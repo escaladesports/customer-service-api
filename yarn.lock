@@ -510,6 +510,10 @@ iron@4.x.x:
     cryptiles "3.x.x"
     hoek "4.x.x"
 
+is-email@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/is-email/-/is-email-1.0.0.tgz#6e02d4145dd6246fa05eea16bfe0b2b843ac2802"
+
 is-finite@^1.0.0:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/is-finite/-/is-finite-1.0.2.tgz#cc6677695602be550ef11e8b4aa6305342b6d0aa"

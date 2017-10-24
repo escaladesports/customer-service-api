@@ -4,6 +4,7 @@
   },
   "dependencies": {
     "googleapis": "^22.2.0",
+    "is-email": "^1.0.0",
     "request": "^2.82.0",
     "request-promise-native": "^1.0.4",
     "sparkpost": "^2.1.2"
