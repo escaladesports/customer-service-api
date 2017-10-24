@@ -45,8 +45,8 @@ function sendWarrantyClaimEmail(data) {
 	<ul>
 		<li>Product type: ${data.productType}</li>
 		<li>Product model: ${data.productModel}</li>
-		<li>Product purchase date: ${data.productPurchaseDate}</li>
-		<li>Problem with product: ${data.productProblem}</li>
+		<li>Product purchase date: ${data.productPurchaseDate || 'Not specified'}</li>
+		<li>Problem with product: ${data.productProblem || 'Not specified'}</li>
 		<li>Receipt photo: ${data.fileReceipt}</li>
 		<li>Model number photo: ${data.fileModelNumber}</li>
 		<li>Photo(s) of problem:
