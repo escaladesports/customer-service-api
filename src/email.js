@@ -14,7 +14,7 @@ function sendWarrantyClaimEmail(data) {
 
 	const category = productTypeMap.lookupCategoryId(data.productType);
 	const sendTo = emailConfig.warrantyClaimRecipients[category];
-	
+
 	const filesProblemItems = Array.isArray(data.filesProblem) ? data.filesProblem.map(path => `<li>${path}</li>`).join('') : `<li>${data.filesProblem}</li>`;
 
 	const subject = 'New warranty claim submission from Escalade Customer Service website';
@@ -55,7 +55,7 @@ function sendWarrantyClaimEmail(data) {
 	</ul>
 	</body></html>`;
 
-	return client.send({subject, message}, emailConfig.warrantyClaimRecipients['air-hockey']);
+	return client.send({subject, message}, sendTo);
 }
 
 module.exports = {
