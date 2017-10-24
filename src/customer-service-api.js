@@ -1,5 +1,6 @@
 const request = require('request-promise-native');
 const queryValidator = require('./query-validator.js');
+const generateId = require('./generate-id.js');
 const store = require('./store.js');
 const range = require('./range.js');
 const email = require('./email.js');
@@ -10,8 +11,12 @@ function postWarrantyClaimActions(data) {
 	return store.saveWarrantyClaim(data)
 	.then(res => {
 		// add in additional information from google sheets
-		const requestId = range.getFinalRangeRow(res.updates.updatedRange);
-		const updatedData = Object.assign({}, data, { requestId });
+		const rowNum = range.getFinalRangeRow(res.updates.updatedRange);
+		const idData = Object.assign({}, data, { rowNum });
+
+		// add in unique ID from google sheets row data + claim data
+		const updatedData = Object.assign({}, data, { requestId: generateId.createWarrantyClaimId(idData) });
+
 		// email relevant parties
 		return email.sendWarrantyClaimEmail(updatedData)
 	});
