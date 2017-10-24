@@ -1,11 +1,13 @@
+const emailConfig = require('../config/email.config.js');
 const createClient = require('./email-client.js').createClient;
+
 /**
 	Sends a quote request email filled-out with param data to specified recipients
 	@param {Object} data Quote request data from form/etc.
 	@param {String|Array.<String>} sendTo String or array of strings with email addresses of recipients
 	@returns {Promise}
 */
-function sendWarrantyClaimEmail(data, sendTo) {
+function sendWarrantyClaimEmail(data) {
 // take data and send to sendTo
 	const client = createClient();
 
@@ -49,7 +51,7 @@ function sendWarrantyClaimEmail(data, sendTo) {
 	</ul>
 	</body></html>`;
 
-	return client.send({subject, message}, sendTo);
+	return client.send({subject, message}, emailConfig.warrantyClaimRecipients['air-hockey']);
 }
 
 module.exports = {
