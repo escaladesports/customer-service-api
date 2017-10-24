@@ -31,7 +31,7 @@ module.exports.postWarrantyClaim = (event, context, callback) => {
 
     fileReceipt: body['file-receipt'],
     fileModelNumber: body['file-model-number'],
-    filesProblem: body['files-problem']
+    filesProblem: body['files-problem'].split(',,') // multiple files possible
   };
 
   serviceApi.postWarrantyClaim(params).then(responseData => {
