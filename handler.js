@@ -2,24 +2,36 @@
 
 const quotesApi = require('./src/quotes-api.js');
 
-module.exports.postQuoteRequest = (event, context, callback) => {
+module.exports.postWarrantyClaim = (event, context, callback) => {
   const body = JSON.parse(event.body);
 
   const params = {
-    dealerId: body.dealerId,
-    dealerName: body.dealerName,
-    dealerAddress: body.dealerAddress,
-    dealerCity: body.dealerCity,
-    dealerState: body.dealerState,
-    dealerZip: body.dealerZip,
-    dealerPhone: body.dealerPhone,
-    userFirstName: body.userFirstName,
-    userLastName: body.userLastName,
-    userEmail: body.userEmail,
-    userPhone: body.userPhone,
-    contactPreference: body.contactPreference,
-    userState: body.userState,
-    userZip: body.userZip
+    userFirstName: body['name-first'],
+    userLastName: body['name-last'],
+    userAddress: body['address'],
+    userCity: body['city'],
+    userState: body['state'],
+    userCountry: body['country'],
+    userEmail: body['email'],
+    userEmailConfirm: body['confirm'],
+    userDaytimePhone: body['daytime-phone'],
+    userEveningPhone: body['evening-phone'],
+    preferredContactMethod: body['preferred-contact-method'],
+
+    dealerName: body['dealer-name'],
+    dealerCity: body['dealer-city'],
+    dealerState: body['dealer-state'],
+    dealerZip: body['dealer-zip'],
+    dealerCountry: body['dealer-country'],
+
+    productType: body['product-type'],
+    productModel: body['product-model'],
+    productPurchaseDate: body['product-purchase-date'],
+    productProblem: body['product-problem'],
+
+    fileReceipt: body['file-receipt'],
+    fileModelNumber: body['file-model-number'],
+    filesProblem: body['files-problem']
   };
 
   quotesApi.postQuote(params).then(responseData => {

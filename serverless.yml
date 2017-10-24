@@ -1,4 +1,4 @@
-service: goalrilla-quote-api # NOTE: update this with your service name
+service: customer-service-api # NOTE: update this with your service name
 
 custom:
   secrets: ${file(env.yml):prod}
@@ -17,10 +17,10 @@ plugins:
   - serverless-offline
 
 functions:
-  postQuoteRequest:
-    handler: handler.postQuoteRequest
+  postWarrantyClaim:
+    handler: handler.postWarrantyClaim
     events:
       - http:
-          path: quote
+          path: warranty-claims
           method: post
           cors: true
