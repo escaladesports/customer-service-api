@@ -1,4 +1,5 @@
 const emailConfig = require('../config/email.config.js');
+const productTypeMap = require('./product-type-map.js');
 const createClient = require('./email-client.js').createClient;
 
 /**
@@ -11,6 +12,9 @@ function sendWarrantyClaimEmail(data) {
 // take data and send to sendTo
 	const client = createClient();
 
+	const category = productTypeMap.lookupCategoryId(data.productType);
+	const sendTo = emailConfig.warrantyClaimRecipients[category];
+	
 	const filesProblemItems = Array.isArray(data.filesProblem) ? data.filesProblem.map(path => `<li>${path}</li>`).join('') : `<li>${data.filesProblem}</li>`;
 
 	const subject = 'New warranty claim submission from Escalade Customer Service website';
@@ -39,7 +43,7 @@ function sendWarrantyClaimEmail(data) {
 	</ul>
 	<h2>Product information</h2>
 	<ul>
-		<li>Product type: ${data.productType}>/li>
+		<li>Product type: ${data.productType}</li>
 		<li>Product model: ${data.productModel}</li>
 		<li>Product purchase date: ${data.productPurchaseDate}</li>
 		<li>Problem with product: ${data.productProblem}</li>
