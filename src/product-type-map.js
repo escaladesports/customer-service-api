@@ -1,13 +1,13 @@
 const productCategories = [
-	{id: 'air-hockey', associatedOptions: ['Air Hockey Table']},
-	{id: 'basketball', associatedOptions: ['Basketball Hoop', 'Training Equipment']},
-	{id: 'billiards', associatedOptions: ['Pool Table']},
-	{id: 'darting', associatedOptions: ['Electronic Dartboard']},
-	{id: 'foosball', associatedOptions: ['Foosball Table']},
-	{id: 'multi-games', associatedOptions: ['Multi-Game Table']},
-	{id: 'outdoor-games', associatedOptions: ['Outdoor Game']},
-	{id: 'pickleball', associatedOptions: ['Pickleball Paddle']},
-	{id: 'table-tennis', associatedOptions: ['Table Tennis Table']},
+	{id: 'air-hockey', associatedOptions: ['air hockey table']},
+	{id: 'basketball', associatedOptions: ['basketball hoop', 'training equipment']},
+	{id: 'billiards', associatedOptions: ['pool table']},
+	{id: 'darting', associatedOptions: ['electronic dartboard']},
+	{id: 'foosball', associatedOptions: ['foosball table']},
+	{id: 'multi-games', associatedOptions: ['multi-game table']},
+	{id: 'outdoor-games', associatedOptions: ['outdoor game']},
+	{id: 'pickleball', associatedOptions: ['pickleball paddle']},
+	{id: 'table-tennis', associatedOptions: ['table tennis table']},
 	{id: 'other', associatedOptions: ['select-or-other']}
 ];
 
@@ -17,8 +17,14 @@ const productCategories = [
 	@returns {String} Product category ID string
 */
 function lookupCategoryId(productType) {
-	// dummy function
-	return 'air-hockey';
+	for (let category of productCategories) {
+		if (category.associatedOptions.indexOf(productType.toLowerCase()) !== -1) {
+			console.log('found '+category.id+' match for '+productType);
+			return category.id;
+		}
+	}
+	console.log('no match found...');
+	return null;
 }
 
 module.exports = {
