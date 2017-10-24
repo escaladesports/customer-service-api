@@ -1,6 +1,6 @@
 'use strict';
 
-const quotesApi = require('./src/quotes-api.js');
+const serviceApi = require('./src/customer-service-api.js');
 
 module.exports.postWarrantyClaim = (event, context, callback) => {
   const body = JSON.parse(event.body);
@@ -34,7 +34,7 @@ module.exports.postWarrantyClaim = (event, context, callback) => {
     filesProblem: body['files-problem']
   };
 
-  quotesApi.postQuote(params).then(responseData => {
+  serviceApi.postWarrantyClaim(params).then(responseData => {
     const body = JSON.stringify(responseData);
     const response = {
       statusCode: 200,

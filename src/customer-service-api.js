@@ -27,9 +27,9 @@ function postQuoteActions(data) {
 * @example
 * manualsApi.manualsRequest({brand: 'goalrilla'}).then( ... )
 */
-module.exports.postQuote = function(data) {
+module.exports.postWarrantyClaim = function(data) {
 	// validate
-	if (!queryValidator.validateQuotePost(data)) {
+	if (!queryValidator.validateWarrantyClaimPost(data)) {
 		return Promise.reject({
 			code: 'malformed',
 			error: new Error('Malformed request data')
