@@ -1,5 +1,6 @@
 const google = require('googleapis');
 const auth = require('./auth.js');
+const productTypeMap = require('./product-type-map.js');
 const storeConfig = require('../config/store.config.js');
 const sheets = google.sheets('v4');
 
@@ -53,7 +54,8 @@ function appendSpreadsheet(auth, spreadsheetData, dataRows) {
 */
 function saveWarrantyClaim(data) {
 	const sheetId = storeConfig.spreadsheetId;
-	const sheetName = storeConfig.spreadsheetName;
+	const category = productTypeMap.lookupCategoryId(data.productType);
+	const sheetName = storeConfig.spreadsheetNames[category];
 
 	// first two rows of spreadsheet are header information
 	// uses columns A:N for key-value storage
