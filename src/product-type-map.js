@@ -19,11 +19,9 @@ const productCategories = [
 function lookupCategoryId(productType) {
 	for (let category of productCategories) {
 		if (category.associatedOptions.indexOf(productType.toLowerCase()) !== -1) {
-			console.log('found '+category.id+' match for '+productType);
 			return category.id;
 		}
 	}
-	console.log('no match found...');
 	return null;
 }
 
