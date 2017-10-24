@@ -14,23 +14,32 @@ function checkMissingKeys(keys, data) {
 	return true;
 }
 
-function validateQuotePost(params) {
+function validateWarrantyClaimPost(params) {
 	// check for missing data
 	if (!checkMissingKeys([
-			'dealerId',
+			'userFirstName',
+			'userLastName',
+			'userAddress',
+			'userCity',
+			'userState',
+			'userCountry',
+			'userEmail',
+			'userEmailConfirm',
+			'userDaytimePhone',
+			'userEveningPhone',
+			'preferredContactMethod',
 			'dealerName',
-			'dealerAddress',
 			'dealerCity',
 			'dealerState',
 			'dealerZip',
-			'dealerPhone',
-			'userFirstName',
-			'userLastName',
-			'userEmail',
-			'userPhone',
-			'contactPreference',
-			'userState',
-			'userZip'
+			'dealerCountry',
+			'productType',
+			'productModel',
+			//'productPurchaseDate',
+			//'productProblem',
+			'fileReceipt',
+			'fileModelNumber'
+			'filesProblem'
 		], params)) {
 		return false;
 	}
