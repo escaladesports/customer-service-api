@@ -35,5 +35,7 @@ module.exports.postWarrantyClaim = function(data) {
 		});
 	}
 	// make request if valid
-	return postWarrantyClaimActions(data);
+	console.log('valid')
+	return Promise.resolve(true);
+	//return postWarrantyClaimActions(data);
 }

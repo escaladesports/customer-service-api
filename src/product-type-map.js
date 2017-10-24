@@ -22,5 +22,5 @@ function lookupCategoryId(productType) {
 }
 
 module.exports = {
-	lookupCategory
+	lookupCategoryId
 }

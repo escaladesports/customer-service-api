@@ -40,11 +40,11 @@ function validateEmail(email, confirmationEmail) {
 	@returns {Boolean} False if validation fails, true if successful
 */
 function validateFileField(files, minCount, maxCount) {
-	if (Array.isArray(files) && (files.length < min || files.length > max)) {
+	if (Array.isArray(files) && (files.length < minCount || files.length > maxCount)) {
 		return false;
 	}
 	// if it isn't an array, we can assume it's a single file, so we'll just check min
-	else if (min > 1) {
+	else if (minCount > 1) {
 		return false;
 	}
 	return true;
@@ -74,7 +74,7 @@ function validateWarrantyClaimPost(params) {
 			//'productPurchaseDate',
 			//'productProblem',
 			'fileReceipt',
-			'fileModelNumber'
+			'fileModelNumber',
 			'filesProblem'
 		], params)) {
 		return false;
@@ -95,5 +95,5 @@ function validateWarrantyClaimPost(params) {
 }
 
 module.exports = {
-	validateQuotePost
+	validateWarrantyClaimPost
 }
