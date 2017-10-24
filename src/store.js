@@ -48,7 +48,7 @@ function appendSpreadsheet(auth, spreadsheetData, dataRows) {
 }
 
 /**
-	Save a dealer quote request in datastore (currently using Google Sheets)
+	Save a warranty claim in datastore (currently using Google Sheets)
 	@param {Object} data Dealer request data object
 */
 function saveWarrantyClaim(data) {
@@ -87,7 +87,7 @@ function saveWarrantyClaim(data) {
 		data.productProblem,
 		data.fileReceipt,
 		data.fileModelNumber,
-		data.filesProblem
+		(Array.isArray(data.filesProblem) ? data.filesProblem.join('\n') : data.filesProblem) // multi-line if multiple files
 	]];
 
 	return auth.authenticateGoogleSheets(false)
@@ -97,5 +97,5 @@ function saveWarrantyClaim(data) {
 }
 
 module.exports = {
-	saveQuoteRequest
+	saveWarrantyClaim
 }
