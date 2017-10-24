@@ -3,18 +3,17 @@ const queryValidator = require('./query-validator.js');
 const store = require('./store.js');
 const range = require('./range.js');
 const email = require('./email.js');
-const emailConfig = require('../config/email.config.js');
 
-function postQuoteActions(data) {
+function postWarrantyClaimActions(data) {
 	// post google sheets request
 	// order is important, do this first so we can pass claim # to email properly
-	return store.saveQuoteRequest(data)
+	return store.saveWarrantyClaim(data)
 	.then(res => {
 		// add in additional information from google sheets
 		const requestId = range.getFinalRangeRow(res.updates.updatedRange);
 		const updatedData = Object.assign({}, data, { requestId });
 		// email relevant parties
-		return email.sendQuoteRequestEmail(updatedData, emailConfig.quoteRequestRecipients)
+		return email.sendWarrantyClaimEmail(updatedData)
 	});
 }
 
@@ -36,5 +35,5 @@ module.exports.postWarrantyClaim = function(data) {
 		});
 	}
 	// make request if valid
-	return postQuoteActions(data);
+	return postWarrantyClaimActions(data);
 }
