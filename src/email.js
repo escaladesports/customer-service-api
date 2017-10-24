@@ -5,31 +5,47 @@ const createClient = require('./email-client.js').createClient;
 	@param {String|Array.<String>} sendTo String or array of strings with email addresses of recipients
 	@returns {Promise}
 */
-function sendQuoteRequestEmail(data, sendTo) {
+function sendWarrantyClaimEmail(data, sendTo) {
 // take data and send to sendTo
 	const client = createClient();
-	const subject = 'New dealer quote request from goalrilla.com';
-	const message = `<html><body><p>Dealer quote request received from goalrilla.com:</p>
+
+	const filesProblemItems = Array.isArray(data.filesProblem) ? data.filesProblem.map(path => `<li>${path}</li>`).join('') : `<li>${data.filesProblem}</li>`;
+
+	const subject = 'New warranty claim submission from Escalade Customer Service website';
+	const message = `<html><body><p>Warranty claim received from Escalade Customer Service website:</p>
 	<p>Request ID: ${data.requestId}</p>
 	<h2>User</h2>
 	<ul>
 		<li>First name: ${data.userFirstName}</li>
 		<li>Last name: ${data.userLastName}</li>
-		<li>Email: ${data.userEmail}</li>
-		<li>Phone: ${data.userPhone}</li>
-		<li>Contact preference: ${data.contactPreference}</li>
+		<li>Address: ${data.userAddress}</li>
+		<li>City: ${data.userCity}</li>
 		<li>State: ${data.userState}</li>
-		<li>Zip code: ${data.userZip}</li>
+		<li>Country: ${data.userCountry}</li>
+		<li>Email: ${data.userEmail}</li>
+		<li>Daytime phone: ${data.userDaytimePhone}</li>
+		<li>Evening phone: ${data.userEveningPhone}</li>
+		<li>Preferred contact method: ${data.preferredContactMethod}</li>
 	</ul>
 	<h2>Dealer</h2>
 	<ul>
-		<li>Dealer ID: ${data.dealerId}</li>
-		<li>Name: ${data.dealerName}</li>
-		<li>Phone: ${data.dealerPhone}</li>
-		<li>Address: ${data.dealerAddress}</li>
-		<li>City: ${data.dealerCity}</li>
-		<li>State: ${data.dealerState}</li>
-		<li>Zip code: ${data.dealerZip}</li>
+		<li>Dealer name: ${data.dealerName}</li>
+		<li>Dealer city: ${data.dealerCity}</li>
+		<li>Dealer state: ${data.dealerState}</li>
+		<li>Dealer zip code: ${data.dealerZip}</li>
+		<li>Dealer country: ${data.dealerCountry}</li>
+	</ul>
+	<h2>Product information</h2>
+	<ul>
+		<li>Product type: ${data.productType}>/li>
+		<li>Product model: ${data.productModel}</li>
+		<li>Product purchase date: ${data.productPurchaseDate}</li>
+		<li>Problem with product: ${data.productProblem}</li>
+		<li>Receipt photo: ${data.fileReceipt}</li>
+		<li>Model number photo: ${data.fileModelNumber}</li>
+		<li>Photo(s) of problem:
+			<ul>${filesProblemItems}</ul>
+		</li>
 	</ul>
 	</body></html>`;
 
@@ -37,5 +53,5 @@ function sendQuoteRequestEmail(data, sendTo) {
 }
 
 module.exports = {
-	sendQuoteRequestEmail
+	sendWarrantyClaimEmail
 }
