@@ -51,13 +51,13 @@ function appendSpreadsheet(auth, spreadsheetData, dataRows) {
 	Save a dealer quote request in datastore (currently using Google Sheets)
 	@param {Object} data Dealer request data object
 */
-function saveQuoteRequest(data) {
+function saveWarrantyClaim(data) {
 	const sheetId = storeConfig.spreadsheetId;
 	const sheetName = storeConfig.spreadsheetName;
 
 	// first two rows of spreadsheet are header information
 	// uses columns A:N for key-value storage
-	const appendRange = sheetName + '!A2:N2';
+	const appendRange = sheetName + '!A2:V2';
 
 	const spreadsheetData = {
 		spreadsheetId: sheetId,
@@ -68,18 +68,26 @@ function saveQuoteRequest(data) {
 	const rows = [[
 		data.userFirstName,
 		data.userLastName,
-		data.userEmail,
-		data.userPhone,
-		data.contactPreference,
+		data.userAddress,
+		data.userCity,
 		data.userState,
-		data.userZip,
-		data.dealerId,
+		data.userCountry,
+		data.userEmail,
+		data.userDaytimePhone,
+		data.userEveningPhone,
+		data.preferredContactMethod,
 		data.dealerName,
-		data.dealerAddress,
 		data.dealerCity,
 		data.dealerState,
 		data.dealerZip,
-		data.dealerPhone
+		data.dealerCountry,
+		data.productType,
+		data.productModel,
+		data.productPurchaseDate,
+		data.productProblem,
+		data.fileReceipt,
+		data.fileModelNumber,
+		data.filesProblem
 	]];
 
 	return auth.authenticateGoogleSheets(false)
