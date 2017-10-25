@@ -1,6 +1,16 @@
 # Escalade Customer Service API
 Serverless API for handling various [Escalade Customer Service](http://support.escaladesports.com) site functions
 
+## Table of Contents
+- [Instalation](#installation)
+- [Environment variables](#environment-variables)
+- [Running development server](#running-development-server)
+- [Deployment](#deployment)
+- [Endpoints](#endpoints)
+    - [warranty-claim](#warranty-claim)
+        - [Warranty Claim Product Types](#warranty-claim-product-types)
+    - [contact](#contact)
+
 ## Installation
 
 Ensure git, node.js 6.1.0+ and yarn are installed
