@@ -2,7 +2,20 @@
 
 const serviceApi = require('./src/customer-service-api.js');
 
-module.exports.postWarrantyClaim = (event, context, callback) => {
+function sendJsonResponse(data, callback) {
+  const body = JSON.stringify(data);
+  const response = {
+    statusCode: 200,
+    body,
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Credentials": 'true'
+    }
+  };
+  callback(null, response);
+}
+
+function postWarrantyClaim(event, context, callback) {
   const body = JSON.parse(event.body);
 
   const params = {
@@ -34,9 +47,6 @@ module.exports.postWarrantyClaim = (event, context, callback) => {
     filesProblem: body['files-problem'].split(',,') // multiple files possible
   };
 
-  console.log('data:')
-  console.dir(params);
-
   serviceApi.postWarrantyClaim(params).then(responseData => {
     const body = JSON.stringify(responseData);
     const response = {
@@ -67,4 +77,14 @@ module.exports.postWarrantyClaim = (event, context, callback) => {
     };
     callback(null, response);
   });
+}
+
+function postContact(event, context, callback) {
+  console.log('postContact');
+  sendJsonResponse(true, callback);
+}
+
+module.exports = {
+  postWarrantyClaim,
+  postContact
 };

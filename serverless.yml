@@ -24,3 +24,10 @@ functions:
           path: warranty-claims
           method: post
           cors: true
+  postContact:
+    handler: handler.postContact
+    events:
+      - http:
+          path: contact
+          method: post
+          cors: true
