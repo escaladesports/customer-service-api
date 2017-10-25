@@ -26,13 +26,9 @@ function postWarrantyClaimActions(data) {
 
 
 /**
-* Use to make a request to the Escalade manuals API (if passed valid data)
+* Use to post a warranty claim
 * @param {Object} data Request data
-* @param {String} data.brand Brand name to retrieve manuals for
-* @returns {Promise.<Object>} Returns a promise resolving to a JSON response from the API (or an error
-* if passed invalid data)
-* @example
-* manualsApi.manualsRequest({brand: 'goalrilla'}).then( ... )
+* @returns {Promise} Returns a promise
 */
 function postWarrantyClaim(data) {
 	// validate
