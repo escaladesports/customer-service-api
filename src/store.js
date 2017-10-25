@@ -87,8 +87,8 @@ function saveWarrantyClaim(data) {
 		data.productModel,
 		data.productPurchaseDate,
 		data.productProblem,
-		data.fileReceipt,
-		data.fileModelNumber,
+		data.fileReceipt[0],
+		data.fileModelNumber[0],
 		(Array.isArray(data.filesProblem) ? data.filesProblem.join('\n') : data.filesProblem) // multi-line if multiple files
 	]];
 

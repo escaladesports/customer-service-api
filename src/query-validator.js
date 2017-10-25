@@ -44,7 +44,7 @@ function validateFileField(files, minCount, maxCount) {
 		return false;
 	}
 	// if it isn't an array, we can assume it's a single file, so we'll just check min
-	else if (minCount > 1) {
+	else if (!Array.isArray(files) && minCount > 1) {
 		return false;
 	}
 	return true;

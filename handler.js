@@ -29,10 +29,13 @@ module.exports.postWarrantyClaim = (event, context, callback) => {
     productPurchaseDate: body['product-purchase-date'],
     productProblem: body['product-problem'],
 
-    fileReceipt: body['file-receipt'],
-    fileModelNumber: body['file-model-number'],
+    fileReceipt: body['file-receipt'].split(',,'),
+    fileModelNumber: body['file-model-number'].split(',,'),
     filesProblem: body['files-problem'].split(',,') // multiple files possible
   };
+
+  console.log('data:')
+  console.dir(params);
 
   serviceApi.postWarrantyClaim(params).then(responseData => {
     const body = JSON.stringify(responseData);
