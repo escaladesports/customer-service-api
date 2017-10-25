@@ -10,6 +10,7 @@ Serverless API for handling various [Escalade Customer Service](http://support.e
     - [warranty-claim](#warranty-claim)
         - [Warranty Claim Product Types](#warranty-claim-product-types)
     - [contact](#contact)
+    	- [Contact Product Types](#contact-product-types)
 
 ## Installation
 
@@ -86,4 +87,33 @@ The following options are currently recognized - they are not case-sensitive.
 
 ### contact
 
-**TODO**
+| POST variable | Description | Example |
+| ------------- | ----------- | ------- |
+| name | Customer's name | `Jane Doe` |
+| email | Customer's contact email address | `example@gmail.com` |
+| confirm | Confirmation of customer's contact email, should match `email` | `example@gmail.com` |
+| subject | Contact submission subject | `Need to request a product manual` |
+| message | Contact submission message | `I checked your website and you do not have a product manual for the Goalrilla DC72E1 - could you send it to me?` |
+| about | Type of product being inquired about (see [list of options currently accepted](#contact-product-types)) - case insensitive | `Basketball` |
+
+#### Contact Product Types
+
+The type of product selected will determine who is emailed - each option is associated with a product category. New options can be associated with various categories by editing [`product-type-map.js`](src/product-type-map.js). To add new product categories, add them in [`product-type-map.js`](src/product-type-map.js) and associate them with email address(es) in [`email.config.js`](config/email.config.js).
+
+The following options are currently recognized - they are not case-sensitive.
+
+| Option | Category |
+| ------ | -------- |
+| Air Hockey | air-hockey |
+| Arcade | arcade |
+| Archery | archery |
+| Basketball | basketball |
+| Billiards | billiards |
+| Darting | darting |
+| Fitness | fitness |
+| Foosball | foosball |
+| Multi Games | multi-games |
+| Playsets | playsets |
+| Table Tennis | table-tennis |
+| Utility Weights | utility-weights |
+| Other | other |
