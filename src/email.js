@@ -2,6 +2,9 @@ const emailConfig = require('../config/email.config.js');
 const productTypeMap = require('./product-type-map.js');
 const createClient = require('./email-client.js').createClient;
 
+const regularFontSize = 12;
+const headerFontSize = 14;
+
 /**
 	Sends a quote request email filled-out with param data to specified recipients
 	@param {Object} data Quote request data from form/etc.
@@ -17,10 +20,12 @@ function sendWarrantyClaimEmail(data) {
 
 	const filesProblemItems = Array.isArray(data.filesProblem) ? data.filesProblem.map(path => `<li>${path}</li>`).join('') : `<li>${data.filesProblem}</li>`;
 
-	const subject = 'New warranty claim submission from Escalade Customer Service website';
-	const message = `<html><body><p>Warranty claim received from Escalade Customer Service website:</p>
-	<p>Request ID: ${data.requestId}</p>
-	<h2>User</h2>
+	const subject = `New warranty claim submission [${data.requestId}] from Escalade Customer Service website`;
+	const message = `<html><body><div style="font-size: ${regularFontSize}px;"><p>Warranty claim received from Escalade Customer Service website:</p>
+	<hr>
+	<p><b>Claim ID: ${data.requestId}</b></p>
+	<hr>
+	<h2 style="font-size: ${headerFontSize}px;">User</h2>
 	<ul>
 		<li>First name: ${data.userFirstName}</li>
 		<li>Last name: ${data.userLastName}</li>
@@ -33,7 +38,8 @@ function sendWarrantyClaimEmail(data) {
 		<li>Evening phone: ${data.userEveningPhone}</li>
 		<li>Preferred contact method: ${data.preferredContactMethod}</li>
 	</ul>
-	<h2>Dealer</h2>
+	<hr>
+	<h2 style="font-size: ${headerFontSize}px;">Dealer</h2>
 	<ul>
 		<li>Dealer name: ${data.dealerName}</li>
 		<li>Dealer city: ${data.dealerCity}</li>
@@ -41,7 +47,8 @@ function sendWarrantyClaimEmail(data) {
 		<li>Dealer zip code: ${data.dealerZip}</li>
 		<li>Dealer country: ${data.dealerCountry}</li>
 	</ul>
-	<h2>Product information</h2>
+	<hr>
+	<h2 style="font-size: ${headerFontSize}px;">Product information</h2>
 	<ul>
 		<li>Product type: ${data.productType}</li>
 		<li>Product model: ${data.productModel}</li>
@@ -53,7 +60,7 @@ function sendWarrantyClaimEmail(data) {
 			<ul>${filesProblemItems}</ul>
 		</li>
 	</ul>
-	</body></html>`;
+	</div></body></html>`;
 
 	return client.send({subject, message}, sendTo);
 }
@@ -63,19 +70,20 @@ function sendContactSubmissionEmail(data) {
 
 	const category = productTypeMap.lookupContactCategory(data.productType);
 	const sendTo = emailConfig.contactRecipients[category];
-	console.dir(sendTo);
 
 	const subject = 'New contact submission from Escalade Customer Service website';
-	const message = `<html><body><p>Contact submission received from Escalade Customer Service website:</p>
+	const message = `<html><body><div style="font-size: ${regularFontSize}px;"><p>Contact submission received from Escalade Customer Service website:</p>
+	<hr>
 	<ul>
 		<li>Name: ${data.userName}</li>
 		<li>Email: ${data.userEmail}</li>
 		<li>Contacting about: ${data.productType}</li>
 	</ul>
+	<hr>
 	<p>Begin message:</p>
-	<h2>${data.contactSubject}</h2>
-	<p>${data.contactMessage}</p>
-	</body></html>`;
+	<h2 style="font-size: ${headerFontSize}px;">${data.contactSubject}</h2>
+	<p><pre>${data.contactMessage}</pre></p>
+	</div></body></html>`;
 
 	return client.send({subject, message}, sendTo);
 }
