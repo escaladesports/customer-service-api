@@ -79,8 +79,6 @@ function postWarrantyClaim(event, context, callback) {
 }
 
 function postContact(event, context, callback) {
-  console.log('postContact');
-
   const body = JSON.parse(event.body);
 
   const params = {
