@@ -82,7 +82,7 @@ function sendContactSubmissionEmail(data) {
 	<hr>
 	<p>Begin message:</p>
 	<h2 style="font-size: ${headerFontSize}px;">${data.contactSubject}</h2>
-	<p><pre>${data.contactMessage}</pre></p>
+	<p><div style="white-space: pre-wrap; word-wrap: break-word;">${data.contactMessage}</div></p>
 	</div></body></html>`;
 
 	return client.send({subject, message}, sendTo);
