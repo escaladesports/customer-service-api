@@ -49,6 +49,12 @@ function postWarrantyClaim(data) {
 */
 function postContact(data) {
 	// validate
+	if (!queryValidator.validateContactPost(data)) {
+		return Promise.reject({
+			code: 'malformed',
+			error: new Error('Malformed request data')
+		});
+	}
 	// make request if valid
 	return Promise.resolve(true);
 }

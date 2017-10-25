@@ -32,6 +32,10 @@ function validateEmail(email, confirmationEmail) {
 	return true;
 }
 
+
+
+
+
 /**
 	Checks file field to ensure it has a number of files within the correct range
 	@param {Array.<String>|String} files Array of file path strings or a single file path string
@@ -94,6 +98,25 @@ function validateWarrantyClaimPost(params) {
 	return true;
 }
 
+function validateContactPost(params) {
+	// check for missing data
+	if (!checkMissingKeys([
+		'userName',
+		'userEmail',
+		'userEmailConfirm',
+		'contactSubject',
+		'contactMessage',
+		'productType'
+	], params)) {
+		return false;
+	}
+	if (!validateEmail(params.userEmail, params.userEmailConfirm)) {
+		return false;
+	}
+	return true;
+}
+
 module.exports = {
-	validateWarrantyClaimPost
+	validateWarrantyClaimPost,
+	validateContactPost
 }
