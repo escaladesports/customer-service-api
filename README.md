@@ -60,8 +60,8 @@ Use `serverless deploy` to deploy to AWS Lambda
 | product-model | Purchased product's model | `DC72E1` |
 | product-purchase-date | Date product was purchased | `10-10-2017` |
 | product-problem | Description of problem with product | `Rim detached from hoop during normal use a few days after purchase` |
-| file-receipt | Path to photo of customer's receipt | `https://cdn.filestackcontent.com/XE1QBZLSnuUtMq36rzLi` |
-| file-model-number | Path to photo of product information sticker with model number and date code | `https://cdn.filestackcontent.com/XE1QBZLSnuUtMq36rzLi` |
+| file-receipt | Path to photo of customer's receipt (single photo only) | `https://cdn.filestackcontent.com/XE1QBZLSnuUtMq36rzLi` |
+| file-model-number | Path to photo of product information sticker with model number and date code (single photo only) | `https://cdn.filestackcontent.com/XE1QBZLSnuUtMq36rzLi` |
 | files-problem | Path to photo(s) of problem with product - up to 5 photos, separated by `,,` | `https://cdn.filestackcontent.com/cXYQa8xvTBCalrZLVHMI,,https://cdn.filestackcontent.com/ia1dj1z4TJCRYdrRz1Al,,https://cdn.filestackcontent.com/0ttoPTc1S0yrK1JyQgKw` |
 
 #### Warranty Claim Product Types
