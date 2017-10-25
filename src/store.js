@@ -68,6 +68,7 @@ function saveWarrantyClaim(data) {
 
 	// quote data
 	const rows = [[
+		'', // first column in-use so skip
 		data.userFirstName,
 		data.userLastName,
 		data.userAddress,
