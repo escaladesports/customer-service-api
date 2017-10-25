@@ -1,32 +1,32 @@
-#Escalade Customer Service API
+# Escalade Customer Service API
 Serverless API for handling various [Escalade Customer Service](http://support.escaladesports.com) site functions
 
-##Installation
+## Installation
 
 Ensure git, node.js 6.1.0+ and yarn are installed
 
 1. Clone repository `git clone https://github.com/escaladesports/customer-service-api.git`
 2. `yarn` (installs dependencies)
 
-##Environment variables
+## Environment variables
 Sensitive credentials are located in `env.yml` - make sure that the Google Sheets API key and similar multiline entries should be prefixed by | and a newline in order to preserve newlines. See example.env.yml for expected entries.
 
-##Running development server
+## Running development server
 
 Use `yarn dev` to run a local testing server using serverless-offline
 
-##Deployment
+## Deployment
 
 Use `serverless deploy` to deploy to AWS Lambda
 
-##Endpoints
+## Endpoints
 
 | Endpoint | POST | 
 | -------- | ---- |
 | [/warranty-claim](#/warranty-claim) | Post new warranty claim
 | [/contact](#/contact) | Post new contact submission
 
-###/warranty-claim
+### /warranty-claim
 
 | POST variable | Description | Example |
 | ------------- | ----------- | ------- |
@@ -54,7 +54,7 @@ Use `serverless deploy` to deploy to AWS Lambda
 | file-model-number | Path to photo of product information sticker with model number and date code | `https://cdn.filestackcontent.com/XE1QBZLSnuUtMq36rzLi` |
 | files-problem | Path to photo(s) of problem with product - up to 5 photos, separated by `,,` | `https://cdn.filestackcontent.com/cXYQa8xvTBCalrZLVHMI,,https://cdn.filestackcontent.com/ia1dj1z4TJCRYdrRz1Al,,https://cdn.filestackcontent.com/0ttoPTc1S0yrK1JyQgKw` |
 
-####Warranty Claim Product Types
+#### Warranty Claim Product Types
 
 The type of product selected will determine who is emailed and which datastore the claim will be filed in - each option is associated with a product category. New options can be associated with various categories by editing [`product-type-map.js`](src/product-type-map.js). To add new product categories, add them in [`product-type-map.js`](src/product-type-map.js) and associate them with email address(es) in [`email.config.js`](config/email.config.js) and a datastore in [`store.config.js`](config/store.config.js).
 
@@ -74,6 +74,6 @@ The following options are currently recognized - they are not case-sensitive.
 | Table Tennis Table | table-tennis |
 | select-or-other | other |
 
-###/contact
+### /contact
 
 **TODO**
