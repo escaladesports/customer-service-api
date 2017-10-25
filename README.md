@@ -39,6 +39,8 @@ Use `serverless deploy` to deploy to AWS Lambda
 
 ### warranty-claim
 
+Use to post a new warranty claim - will email appropriate addresses (defined in [email.config.js](src/email.config.js)) and send a claim to appropriate datastore (defined in [store.config.js](src/store.config.js)).
+
 | POST variable | Description | Example |
 | ------------- | ----------- | ------- |
 | name-first | Customer's first name | `Jane` |
@@ -86,6 +88,8 @@ The following options are currently recognized - they are not case-sensitive.
 | select-or-other | other |
 
 ### contact
+
+Use to post a new contact submission - will email appropriate addresses (defined in [email.config.js](src/email.config.js)).
 
 | POST variable | Description | Example |
 | ------------- | ----------- | ------- |
