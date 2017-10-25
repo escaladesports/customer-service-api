@@ -54,7 +54,7 @@ function appendSpreadsheet(auth, spreadsheetData, dataRows) {
 */
 function saveWarrantyClaim(data) {
 	const sheetId = storeConfig.spreadsheetId;
-	const category = productTypeMap.lookupCategoryId(data.productType);
+	const category = productTypeMap.lookupWarrantyClaimCategory(data.productType);
 	const sheetName = storeConfig.spreadsheetNames[category];
 
 	// first two rows of spreadsheet are header information

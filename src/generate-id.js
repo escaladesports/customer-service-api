@@ -8,7 +8,7 @@ const productTypeMap = require('./product-type-map.js');
 	@returns {String} ID string for this claim
 */
 function createWarrantyClaimId(data) {
-	const prefix = productTypeMap.lookupCategoryId(data.productType);
+	const prefix = productTypeMap.lookupWarrantyClaimCategory(data.productType);
 	const suffix = data.rowNum;
 
 	return `${prefix}-${suffix}`;

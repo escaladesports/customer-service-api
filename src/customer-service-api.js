@@ -22,6 +22,11 @@ function postWarrantyClaimActions(data) {
 	});
 }
 
+function postContactActions(data) {
+	// email
+	return email.sendContactSubmissionEmail(data);
+}
+
 
 
 
@@ -56,7 +61,7 @@ function postContact(data) {
 		});
 	}
 	// make request if valid
-	return Promise.resolve(true);
+	return postContactActions(data);
 }
 
 module.exports = {

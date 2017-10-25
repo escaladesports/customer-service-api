@@ -12,7 +12,7 @@ function sendWarrantyClaimEmail(data) {
 // take data and send to sendTo
 	const client = createClient();
 
-	const category = productTypeMap.lookupCategoryId(data.productType);
+	const category = productTypeMap.lookupWarrantyClaimCategory(data.productType);
 	const sendTo = emailConfig.warrantyClaimRecipients[category];
 
 	const filesProblemItems = Array.isArray(data.filesProblem) ? data.filesProblem.map(path => `<li>${path}</li>`).join('') : `<li>${data.filesProblem}</li>`;
@@ -58,6 +58,29 @@ function sendWarrantyClaimEmail(data) {
 	return client.send({subject, message}, sendTo);
 }
 
+function sendContactSubmissionEmail(data) {
+	const client = createClient();
+
+	const category = productTypeMap.lookupContactCategory(data.productType);
+	const sendTo = emailConfig.contactRecipients[category];
+	console.dir(sendTo);
+
+	const subject = 'New contact submission from Escalade Customer Service website';
+	const message = `<html><body><p>Contact submission received from Escalade Customer Service website:</p>
+	<ul>
+		<li>Name: ${data.userName}</li>
+		<li>Email: ${data.userEmail}</li>
+		<li>Contacting about: ${data.productType}</li>
+	</ul>
+	<p>Begin message:</p>
+	<h2>${data.contactSubject}</h2>
+	<p>${data.contactMessage}</p>
+	</body></html>`;
+
+	return client.send({subject, message}, sendTo);
+}
+
 module.exports = {
-	sendWarrantyClaimEmail
+	sendWarrantyClaimEmail,
+	sendContactSubmissionEmail
 }
