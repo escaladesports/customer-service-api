@@ -23,10 +23,10 @@ Use `serverless deploy` to deploy to AWS Lambda
 
 | Endpoint | POST | 
 | -------- | ---- |
-| [/warranty-claim](#/warranty-claim) | Post new warranty claim
-| [/contact](#/contact) | Post new contact submission
+| [/warranty-claim](#warranty-claim) | Post new warranty claim
+| [/contact](#contact) | Post new contact submission
 
-### /warranty-claim
+### warranty-claim
 
 | POST variable | Description | Example |
 | ------------- | ----------- | ------- |
@@ -74,6 +74,6 @@ The following options are currently recognized - they are not case-sensitive.
 | Table Tennis Table | table-tennis |
 | select-or-other | other |
 
-### /contact
+### contact
 
 **TODO**
