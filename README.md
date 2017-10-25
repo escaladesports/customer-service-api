@@ -2,7 +2,7 @@
 Serverless API for handling various [Escalade Customer Service](http://support.escaladesports.com) site functions
 
 ## Table of Contents
-- [Instalation](#installation)
+- [Installation](#installation)
 - [Environment variables](#environment-variables)
 - [Running development server](#running-development-server)
 - [Deployment](#deployment)
