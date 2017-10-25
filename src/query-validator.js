@@ -1,4 +1,5 @@
 const isEmail = require('is-email');
+const productTypeMap = require('./product-type-map');
 
 /*
 	Checks for missing keys in request data
@@ -32,10 +33,6 @@ function validateEmail(email, confirmationEmail) {
 	return true;
 }
 
-
-
-
-
 /**
 	Checks file field to ensure it has a number of files within the correct range
 	@param {Array.<String>|String} files Array of file path strings or a single file path string
@@ -53,6 +50,31 @@ function validateFileField(files, minCount, maxCount) {
 	}
 	return true;
 }
+
+/**
+	Checks product type to ensure it's a recognized warranty claim product type option
+	@param {String} productType Product type string to validate
+	@returns {Boolean} False if validation fails, true if successful
+*/
+function validateWarrantyCategory(productType) {
+	const category = productTypeMap.lookupWarrantyClaimCategory(productType);
+	return (category ? true : false);
+}
+
+/**
+	Checks product type to ensure it's a recognized contact product type option
+	@param {String} productType Product type string to validate
+	@returns {Boolean} False if validation fails, true if successful
+*/
+function validateContactCategory(productType) {
+	const category = productTypeMap.lookupContactCategory(productType);
+	return (category ? true : false);
+}
+
+
+
+
+
 
 function validateWarrantyClaimPost(params) {
 	// check for missing data
@@ -95,6 +117,9 @@ function validateWarrantyClaimPost(params) {
 	if (!validateFileField(params.filesProblem, 1, 5)) {
 		return false;
 	}
+	if (!validateWarrantyCategory(params.productType)) {
+		return false;
+	}
 	return true;
 }
 
@@ -111,6 +136,9 @@ function validateContactPost(params) {
 		return false;
 	}
 	if (!validateEmail(params.userEmail, params.userEmailConfirm)) {
+		return false;
+	}
+	if (!validateContactCategory(params.productType)) {
 		return false;
 	}
 	return true;
