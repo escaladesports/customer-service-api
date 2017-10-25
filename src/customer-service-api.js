@@ -22,6 +22,9 @@ function postWarrantyClaimActions(data) {
 	});
 }
 
+
+
+
 /**
 * Use to make a request to the Escalade manuals API (if passed valid data)
 * @param {Object} data Request data
@@ -31,7 +34,7 @@ function postWarrantyClaimActions(data) {
 * @example
 * manualsApi.manualsRequest({brand: 'goalrilla'}).then( ... )
 */
-module.exports.postWarrantyClaim = function(data) {
+function postWarrantyClaim(data) {
 	// validate
 	if (!queryValidator.validateWarrantyClaimPost(data)) {
 		return Promise.reject({
@@ -41,4 +44,15 @@ module.exports.postWarrantyClaim = function(data) {
 	}
 	// make request if valid
 	return postWarrantyClaimActions(data);
+}
+
+function postContact(data) {
+	// validate
+	// make request if valid
+	return Promise.resolve(true);
+}
+
+module.exports = {
+	postWarrantyClaim,
+	postContact
 }

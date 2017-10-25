@@ -80,7 +80,24 @@ function postWarrantyClaim(event, context, callback) {
 
 function postContact(event, context, callback) {
   console.log('postContact');
-  sendJsonResponse(true, callback);
+
+  const body = JSON.parse(event.body);
+
+  const params = {
+    userName: body['name'],
+    userEmail: body['email'],
+    userEmailConfirm: body['confirm'],
+    contactSubject: body['subject'],
+    contactMessage: body['message'],
+    productType: body['about']
+  };
+
+  serviceApi.postContact(params).then(responseData => {
+    return sendJsonResponse(responseData, callback);
+  }).catch(err => {
+    return sendJsonError(err, callback);
+  });
+
 }
 
 module.exports = {
