@@ -12,6 +12,8 @@ Serverless API for handling various [Escalade Customer Service](http://support.e
     - [contact](#contact)
     	- [Contact Product Types](#contact-product-types)
 
+---
+
 ## Installation
 
 Ensure git, node.js 6.1.0+ and yarn are installed
@@ -30,12 +32,16 @@ Use `yarn dev` to run a local testing server using serverless-offline
 
 Use `serverless deploy` to deploy to AWS Lambda
 
+---
+
 ## Endpoints
 
 | Endpoint | POST | 
 | -------- | ---- |
 | [/warranty-claim](#warranty-claim) | Post new warranty claim
 | [/contact](#contact) | Post new contact submission
+
+---
 
 ### warranty-claim
 
@@ -86,6 +92,8 @@ The following options are currently recognized - they are not case-sensitive.
 | Pickleball Paddle | pickleball |
 | Table Tennis Table | table-tennis |
 | select-or-other | other |
+
+---
 
 ### contact
 
