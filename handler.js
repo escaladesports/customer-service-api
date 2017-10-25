@@ -15,6 +15,30 @@ function sendJsonResponse(data, callback) {
   callback(null, response);
 }
 
+function sendJsonError(err, callback) {
+  let msg = 'There was a problem with your request. Please try again later';
+
+  if (err.code === 'malformed') {
+    msg = 'The request data was malformed- ensure parameter data is correct and try again.'
+  }
+
+  const response = {
+    statusCode: 400,
+    body: JSON.stringify({
+      errors: [msg]
+    }),
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Credentials": true
+    }
+  };
+  callback(null, response);
+}
+
+
+
+
+
 function postWarrantyClaim(event, context, callback) {
   const body = JSON.parse(event.body);
 
@@ -48,35 +72,10 @@ function postWarrantyClaim(event, context, callback) {
   };
 
   serviceApi.postWarrantyClaim(params).then(responseData => {
-    const body = JSON.stringify(responseData);
-    const response = {
-      statusCode: 200,
-      body,
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Credentials": 'true'
-      }
-    };
-    callback(null, response);
+    return sendJsonResponse(responseData, callback);
   }).catch(err => {
-    let msg = 'There was a problem with your request. Please try again later';
-    
-    if (err.code === 'malformed') {
-      msg = 'The request data was malformed- ensure parameter data is correct and try again.'
-    }
-
-    const response = {
-      statusCode: 400,
-      body: JSON.stringify({
-        errors: [msg]
-      }),
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Credentials": true
-      }
-    };
-    callback(null, response);
-  });
+    return sendJsonError(err, callback);
+  }); 
 }
 
 function postContact(event, context, callback) {
