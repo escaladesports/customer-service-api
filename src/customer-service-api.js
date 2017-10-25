@@ -46,6 +46,11 @@ function postWarrantyClaim(data) {
 	return postWarrantyClaimActions(data);
 }
 
+/**
+* Use to post a contact request
+* @param {Object} data Request data
+* @returns {Promise} Returns a promise
+*/
 function postContact(data) {
 	// validate
 	// make request if valid
