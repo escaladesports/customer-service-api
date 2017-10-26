@@ -34,6 +34,19 @@ function validateEmail(email, confirmationEmail) {
 }
 
 /**
+	Checks text data length
+	@param {String} text Text to validate length of
+	@param {Number} maxLength Maximum character length of text
+	@returns {Boolean} False if validation fails, true if successful
+*/
+function validateTextLength(text, maxLength) {
+	if (text.toString().length > parseInt(maxLength)) {
+		return false;
+	}
+	return true;
+}
+
+/**
 	Checks file field to ensure it has a number of files within the correct range
 	@param {Array.<String>|String} files Array of file path strings or a single file path string
 	@param {Number} minCount Minimum number of files allowed in field
@@ -105,9 +118,35 @@ function validateWarrantyClaimPost(params) {
 		], params)) {
 		return false;
 	}
+	// field length validation
+	if (
+		!validateTextLength(params.userFirstName, 255) || !validateTextLength(params.userLastName, 255) ||
+		!validateTextLength(params.userAddress, 2000) || !validateTextLength(params.userCity, 255) ||
+		!validateTextLength(params.userState, 255) || !validateTextLength(params.userCountry, 255) ||
+		!validateTextLength(params.userEmail, 255) || !validateTextLength(params.userEmailConfirm, 255) ||
+		!validateTextLength(params.userDaytimePhone, 255) || !validateTextLength(params.userEveningPhone, 255) ||
+		!validateTextLength(params.preferredContactMethod, 255) || !validateTextLength(params.dealerName, 255) ||
+		!validateTextLength(params.dealerCity, 255) || !validateTextLength(params.dealerState, 255) ||
+		!validateTextLength(params.dealerZip, 255) || !validateTextLength(params.dealerCountry, 255) ||
+		!validateTextLength(params.productType, 255) || !validateTextLength(params.productModel, 255) ||
+		(params.productPurchaseDate && !validateTextLength(params.productPurchaseDate, 255)) ||
+		(params.productProblem && !validateTextLength(params.productProblem, 50000)) ||
+		!validateTextLength(params.fileReceipt[0], 1000) || !validateTextLength(params.fileModelNumber[0], 1000)
+	) {
+		console.log('invalid field length');
+		return false;
+	}
+	for (let file of params.filesProblem) {
+		if (!validateTextLength(file, 1000)) {
+			console.log('invalid field length');
+			return false;
+		}
+	}
+	// email validation
 	if (!validateEmail(params.userEmail, params.userEmailConfirm)) {
 		return false;
 	}
+	// file field validation
 	if (!validateFileField(params.fileReceipt, 1, 1)) {
 		return false;
 	}
@@ -117,6 +156,7 @@ function validateWarrantyClaimPost(params) {
 	if (!validateFileField(params.filesProblem, 1, 5)) {
 		return false;
 	}
+	// product type validation
 	if (!validateWarrantyCategory(params.productType)) {
 		return false;
 	}
@@ -135,9 +175,19 @@ function validateContactPost(params) {
 	], params)) {
 		return false;
 	}
+	// field length validation
+	if (
+		!validateTextLength(params.userName, 255) || !validateTextLength(params.userEmail, 255) ||
+		!validateTextLength(params.userEmailConfirm, 255) || !validateTextLength(params.contactSubject, 255) ||
+		!validateTextLength(params.contactMessage, 50000) || !validateTextLength(params.productType, 255)
+	) {
+		return false;
+	}
+	// email validation
 	if (!validateEmail(params.userEmail, params.userEmailConfirm)) {
 		return false;
 	}
+	// product type/category validation
 	if (!validateContactCategory(params.productType)) {
 		return false;
 	}
