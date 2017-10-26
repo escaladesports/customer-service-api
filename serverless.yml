@@ -9,6 +9,7 @@ provider:
   stage: dev
   region: us-east-2
   environment:
+    STAGE: ${self:provider.stage}
     SPARKPOST_API_KEY: "${self:custom.secrets.SPARKPOST_API_KEY}"
     GOOGLE_SHEETS_API_KEY: "${self:custom.secrets.GOOGLE_SHEETS_API_KEY}"
     GOOGLE_SHEETS_CLIENT_EMAIL: "${self:custom.secrets.GOOGLE_SHEETS_CLIENT_EMAIL}"

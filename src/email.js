@@ -2,6 +2,8 @@ const emailConfig = require('../config/email.config.js');
 const productTypeMap = require('./product-type-map.js');
 const createClient = require('./email-client.js').createClient;
 
+const stage = process.env.STAGE || 'dev';
+
 const regularFontSize = 12;
 const headerFontSize = 14;
 
@@ -16,7 +18,7 @@ function sendWarrantyClaimEmail(data) {
 	const client = createClient();
 
 	const category = productTypeMap.lookupWarrantyClaimCategory(data.productType);
-	const sendTo = emailConfig.warrantyClaimRecipients[category];
+	const sendTo = emailConfig[stage].warrantyClaimRecipients[category];
 
 	const filesProblemItems = Array.isArray(data.filesProblem) ? data.filesProblem.map(path => `<li>${path}</li>`).join('') : `<li>${data.filesProblem}</li>`;
 
@@ -69,7 +71,7 @@ function sendContactSubmissionEmail(data) {
 	const client = createClient();
 
 	const category = productTypeMap.lookupContactCategory(data.productType);
-	const sendTo = emailConfig.contactRecipients[category];
+	const sendTo = emailConfig[stage].contactRecipients[category];
 
 	const subject = 'New contact submission from Escalade Customer Service website';
 	const message = `<html><body><div style="font-size: ${regularFontSize}px;"><p>Contact submission received from Escalade Customer Service website:</p>

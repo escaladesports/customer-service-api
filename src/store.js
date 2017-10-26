@@ -4,6 +4,8 @@ const productTypeMap = require('./product-type-map.js');
 const storeConfig = require('../config/store.config.js');
 const sheets = google.sheets('v4');
 
+const stage = process.env.STAGE || 'dev';
+
 /**
 	Promise wrapper around googleapis sheets append method
 	@param {Object} params Params to pass to google sheets
@@ -53,9 +55,9 @@ function appendSpreadsheet(auth, spreadsheetData, dataRows) {
 	@param {Object} data Dealer request data object
 */
 function saveWarrantyClaim(data) {
-	const sheetId = storeConfig.spreadsheetId;
+	const sheetId = storeConfig[stage].spreadsheetId;
 	const category = productTypeMap.lookupWarrantyClaimCategory(data.productType);
-	const sheetName = storeConfig.spreadsheetNames[category];
+	const sheetName = storeConfig[stage].spreadsheetNames[category];
 
 	// first two rows of spreadsheet are header information
 	// uses columns A:N for key-value storage
