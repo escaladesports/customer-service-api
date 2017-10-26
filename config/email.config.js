@@ -1,77 +1,98 @@
 module.exports = {
 	warrantyClaimRecipients: {
 		"air-hockey" : [
-			{email: 'christian.l.sedlacek@gmail.com', name: 'Christian Sedlacek'}
+			{email: 'gameroom@escaladesports.com', name: 'Escalade Sports Game Room'},
+			{email: 'csedlacek@escaladesports.com', name: 'Christian Sedlacek'}
 		],
 		"basketball" : [
+			{email: 'basketball@escaladesports.com', name: 'Escalade Sports Basketball'},
 			{email: 'csedlacek@escaladesports.com', name: 'Christian Sedlacek'}
 		],
 		"billiards" : [
-			{email: 'christian.l.sedlacek@gmail.com', name: 'Christian Sedlacek'},
+			{email: 'gameroom@escaladesports.com', name: 'Escalade Sports Game Room'},
 			{email: 'csedlacek@escaladesports.com', name: 'Christian Sedlacek'}
 		],
 		"darting" : [
-			{email: 'christian.l.sedlacek@gmail.com', name: 'Christian Sedlacek'}
+			{email: 'gameroom@escaladesports.com', name: 'Escalade Sports Game Room'},
+			{email: 'csedlacek@escaladesports.com', name: 'Christian Sedlacek'}
 		],
 		"foosball" : [
-			{email: 'christian.l.sedlacek@gmail.com', name: 'Christian Sedlacek'}
+			{email: 'gameroom@escaladesports.com', name: 'Escalade Sports Game Room'},
+			{email: 'csedlacek@escaladesports.com', name: 'Christian Sedlacek'}
 		],
 		"multi-games" : [
-			{email: 'christian.l.sedlacek@gmail.com', name: 'Christian Sedlacek'}
+			{email: 'gameroom@escaladesports.com', name: 'Escalade Sports Game Room'},
+			{email: 'csedlacek@escaladesports.com', name: 'Christian Sedlacek'}
 		],
 		"outdoor-games" : [
-			{email: 'christian.l.sedlacek@gmail.com', name: 'Christian Sedlacek'},
+			{email: 'gameroom@escaladesports.com', name: 'Escalade Sports Game Room'},
 			{email: 'csedlacek@escaladesports.com', name: 'Christian Sedlacek'}
 		],
 		"pickleball" : [
-			{email: 'christian.l.sedlacek@gmail.com', name: 'Christian Sedlacek'}
+			{email: 'pickleball@escaladesports.com', name: 'Escalade Sports Pickleball'},
+			{email: 'csedlacek@escaladesports.com', name: 'Christian Sedlacek'}
 		],
 		"table-tennis" : [
-			{email: 'christian.l.sedlacek@gmail.com', name: 'Christian Sedlacek'}
+			{email: 'tabletennis@escaladesports.com', name: 'Escalade Sports Table Tennis'},
+			{email: 'csedlacek@escaladesports.com', name: 'Christian Sedlacek'}
 		],
 		"other" : [
-			{email: 'christian.l.sedlacek@gmail.com', name: 'Christian Sedlacek'}
+			{email: 'customerservice@escaladesports.com', name: 'Escalade Sports Customer Service'},
+			{email: 'csedlacek@escaladesports.com', name: 'Christian Sedlacek'}
 		]
 	},
 	contactRecipients: {
 		"air-hockey" : [
-			{email: 'christian.l.sedlacek@gmail.com', name: 'Christian Sedlacek'}
+			{email: 'gameroom@escaladesports.com', name: 'Escalade Sports Game Room'},
+			{email: 'csedlacek@escaladesports.com', name: 'Christian Sedlacek'}
 		],
 		"arcade" : [
-			{email: 'christian.l.sedlacek@gmail.com', name: 'Christian Sedlacek'}
+			{email: 'gameroom@escaladesports.com', name: 'Escalade Sports Game Room'},
+			{email: 'csedlacek@escaladesports.com', name: 'Christian Sedlacek'}
 		],
 		"archery" : [
-			{email: 'christian.l.sedlacek@gmail.com', name: 'Christian Sedlacek'}
+			{email: 'bearcustomercare@beararcheryproducts.com', name: 'Bear Customer Care'},
+			{email: 'csedlacek@escaladesports.com', name: 'Christian Sedlacek'}
 		],
 		"basketball" : [
-			{email: 'christian.l.sedlacek@gmail.com', name: 'Christian Sedlacek'}
+			{email: 'basketball@escaladesports.com', name: 'Escalade Sports Basketball'},
+			{email: 'csedlacek@escaladesports.com', name: 'Christian Sedlacek'}
 		],
 		"billiards" : [
-			{email: 'christian.l.sedlacek@gmail.com', name: 'Christian Sedlacek'}
+			{email: 'gameroom@escaladesports.com', name: 'Escalade Sports Game Room'},
+			{email: 'csedlacek@escaladesports.com', name: 'Christian Sedlacek'}
 		],
 		"darting" : [
-			{email: 'christian.l.sedlacek@gmail.com', name: 'Christian Sedlacek'}
+			{email: 'gameroom@escaladesports.com', name: 'Escalade Sports Game Room'},
+			{email: 'csedlacek@escaladesports.com', name: 'Christian Sedlacek'}
 		],
 		"fitness" : [
-			{email: 'christian.l.sedlacek@gmail.com', name: 'Christian Sedlacek'}
+			{email: 'customerservice@escaladesports.com', name: 'Escalade Sports Customer Service'},
+			{email: 'csedlacek@escaladesports.com', name: 'Christian Sedlacek'}
 		],
 		"foosball" : [
-			{email: 'christian.l.sedlacek@gmail.com', name: 'Christian Sedlacek'}
+			{email: 'gameroom@escaladesports.com', name: 'Escalade Sports Game Room'},
+			{email: 'csedlacek@escaladesports.com', name: 'Christian Sedlacek'}
 		],
 		"multi-games" : [
-			{email: 'christian.l.sedlacek@gmail.com', name: 'Christian Sedlacek'}
+			{email: 'gameroom@escaladesports.com', name: 'Escalade Sports Game Room'},
+			{email: 'csedlacek@escaladesports.com', name: 'Christian Sedlacek'}
 		],
 		"playsets" : [
-			{email: 'christian.l.sedlacek@gmail.com', name: 'Christian Sedlacek'}
+			{email: 'playgroundcs@escaladesports.com', name: 'Escalade Sports Playground Customer Service'},
+			{email: 'csedlacek@escaladesports.com', name: 'Christian Sedlacek'}
 		],
 		"table-tennis" : [
-			{email: 'christian.l.sedlacek@gmail.com', name: 'Christian Sedlacek'}
+			{email: 'tabletennis@escaladesports.com', name: 'Escalade Sports Table Tennis'},
+			{email: 'csedlacek@escaladesports.com', name: 'Christian Sedlacek'}
 		],
 		"utility-weights" : [
-			{email: 'christian.l.sedlacek@gmail.com', name: 'Christian Sedlacek'}
+			{email: 'customerservice@escaladesports.com', name: 'Escalade Sports Customer Service'},
+			{email: 'csedlacek@escaladesports.com', name: 'Christian Sedlacek'}
 		],
 		"other" : [
-			{email: 'christian.l.sedlacek@gmail.com', name: 'Christian Sedlacek'}
+			{email: 'customerservice@escaladesports.com', name: 'Escalade Sports Customer Service'},
+			{email: 'csedlacek@escaladesports.com', name: 'Christian Sedlacek'}
 		]
 	}
 }
