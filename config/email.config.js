@@ -96,7 +96,7 @@ module.exports = {
 				{email: 'csedlacek@escaladesports.com', name: 'Christian Sedlacek'}
 			]
 		}
-	}
+	},
 	dev: {
 		warrantyClaimRecipients: {
 			"air-hockey" : [
