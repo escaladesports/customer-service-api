@@ -6,7 +6,7 @@ custom:
 provider:
   name: aws
   runtime: nodejs6.10
-  stage: dev
+  stage: production
   region: us-east-2
   environment:
     STAGE: ${self:provider.stage}
