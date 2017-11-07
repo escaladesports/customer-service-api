@@ -4,7 +4,9 @@
 	@returns {Number} Final row in range
 */
 function getFinalRangeRow(range) {
-	const finalRow = parseInt(range.slice(-1));
+	const num = range.match(/\d+$/);
+	const finalRow = num ? parseInt(num[0]) : NaN;
+
 	if (isNaN(finalRow)) {
 		return false;
 	}
