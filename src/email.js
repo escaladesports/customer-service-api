@@ -34,6 +34,7 @@ function sendWarrantyClaimEmail(data) {
 		<li>Address: ${data.userAddress}</li>
 		<li>City: ${data.userCity}</li>
 		<li>State: ${data.userState}</li>
+		<li>Zip: ${data.userZip}</li>
 		<li>Country: ${data.userCountry}</li>
 		<li>Email: ${data.userEmail}</li>
 		<li>Daytime phone: ${data.userDaytimePhone}</li>
