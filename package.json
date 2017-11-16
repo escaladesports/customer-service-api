@@ -10,6 +10,8 @@
     "sparkpost": "^2.1.2"
   },
   "scripts": {
-    "dev": "NODE_ENV=dev serverless offline start"
+    "dev": "NODE_ENV=dev serverless offline start",
+	"deploy": "serverless deploy --stage dev",
+	"deploy-prod": "serverless deploy --stage production"
   }
 }
