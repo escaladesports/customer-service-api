@@ -5,13 +5,14 @@
   "dependencies": {
     "googleapis": "^22.2.0",
     "is-email": "^1.0.0",
+    "is-valid-zip": "^0.0.3",
     "request": "^2.82.0",
     "request-promise-native": "^1.0.4",
     "sparkpost": "^2.1.2"
   },
   "scripts": {
     "dev": "NODE_ENV=dev serverless offline start",
-	"deploy": "serverless deploy --stage dev",
-	"deploy-prod": "serverless deploy --stage production"
+    "deploy": "serverless deploy --stage dev",
+    "deploy-prod": "serverless deploy --stage production"
   }
 }
