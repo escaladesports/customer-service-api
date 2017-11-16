@@ -54,6 +54,7 @@ Use to post a new warranty claim - will email appropriate addresses (defined in 
 | address | Customer's address | `817 Maxwell Ave` |
 | city | Customer's city of residence | `Evansville` |
 | state | Customer's state of residence (full state name) | `Indiana` |
+| zip | Customer's zip code | `47711` or `47711-3870` |
 | country | Customer's country of residence (full country name) | `United States` |
 | email | Customer's contact email address | `example@gmail.com` |
 | confirm | Confirmation of customer's contact email, should match `email` | `example@gmail.com` |
