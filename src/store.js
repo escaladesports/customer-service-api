@@ -61,7 +61,7 @@ function saveWarrantyClaim(data) {
 
 	// first two rows of spreadsheet are header information
 	// uses columns A:N for key-value storage
-	const appendRange = sheetName + '!B2:W2';
+	const appendRange = sheetName + '!B2:X2';
 
 	const spreadsheetData = {
 		spreadsheetId: sheetId,
@@ -76,6 +76,7 @@ function saveWarrantyClaim(data) {
 		data.userAddress,
 		data.userCity,
 		data.userState,
+		data.userZip,
 		data.userCountry,
 		data.userEmail,
 		data.userDaytimePhone,

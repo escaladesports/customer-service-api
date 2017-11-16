@@ -1,4 +1,5 @@
 const isEmail = require('is-email');
+const isValidZip = require('is-valid-zip');
 const productTypeMap = require('./product-type-map');
 
 /*
@@ -31,6 +32,15 @@ function validateEmail(email, confirmationEmail) {
 		return false;
 	}
 	return true;
+}
+
+/**
+	Checks for valid US zip code
+	@param {String|Number} zip Zip code to validate
+	@returns {Boolean} False if validation fails, true if successful
+*/
+function validateZip(zip) {
+	return isValidZip(zip);
 }
 
 /**
@@ -97,6 +107,7 @@ function validateWarrantyClaimPost(params) {
 			'userAddress',
 			'userCity',
 			'userState',
+			'userZip',
 			'userCountry',
 			'userEmail',
 			'userEmailConfirm',
@@ -122,13 +133,14 @@ function validateWarrantyClaimPost(params) {
 	if (
 		!validateTextLength(params.userFirstName, 255) || !validateTextLength(params.userLastName, 255) ||
 		!validateTextLength(params.userAddress, 2000) || !validateTextLength(params.userCity, 255) ||
-		!validateTextLength(params.userState, 255) || !validateTextLength(params.userCountry, 255) ||
-		!validateTextLength(params.userEmail, 255) || !validateTextLength(params.userEmailConfirm, 255) ||
-		!validateTextLength(params.userDaytimePhone, 255) || !validateTextLength(params.userEveningPhone, 255) ||
-		!validateTextLength(params.preferredContactMethod, 255) || !validateTextLength(params.dealerName, 255) ||
-		!validateTextLength(params.dealerCity, 255) || !validateTextLength(params.dealerState, 255) ||
-		!validateTextLength(params.dealerZip, 255) || !validateTextLength(params.dealerCountry, 255) ||
-		!validateTextLength(params.productType, 255) || !validateTextLength(params.productModel, 255) ||
+		!validateTextLength(params.userState, 255) || !validateTextLength(params.userZip, 12) ||
+		!validateTextLength(params.userCountry, 255) || !validateTextLength(params.userEmail, 255) ||
+		!validateTextLength(params.userEmailConfirm, 255) || !validateTextLength(params.userDaytimePhone, 255) ||
+		!validateTextLength(params.userEveningPhone, 255) || !validateTextLength(params.preferredContactMethod, 255) ||
+		!validateTextLength(params.dealerName, 255) || !validateTextLength(params.dealerCity, 255) ||
+		!validateTextLength(params.dealerState, 255) || !validateTextLength(params.dealerZip, 255) ||
+		!validateTextLength(params.dealerCountry, 255) || !validateTextLength(params.productType, 255) ||
+		!validateTextLength(params.productModel, 255) ||
 		(params.productPurchaseDate && !validateTextLength(params.productPurchaseDate, 255)) ||
 		(params.productProblem && !validateTextLength(params.productProblem, 50000)) ||
 		!validateTextLength(params.fileReceipt[0], 1000) || !validateTextLength(params.fileModelNumber[0], 1000)
@@ -181,6 +193,10 @@ function validateContactPost(params) {
 		!validateTextLength(params.userEmailConfirm, 255) || !validateTextLength(params.contactSubject, 255) ||
 		!validateTextLength(params.contactMessage, 50000) || !validateTextLength(params.productType, 255)
 	) {
+		return false;
+	}
+	// zip validation
+	if (!validateZip(params.userZip)) {
 		return false;
 	}
 	// email validation

@@ -48,6 +48,7 @@ function postWarrantyClaim(event, context, callback) {
     userAddress: body['address'],
     userCity: body['city'],
     userState: body['state'],
+    userZip: body['zip'],
     userCountry: body['country'],
     userEmail: body['email'],
     userEmailConfirm: body['confirm'],
