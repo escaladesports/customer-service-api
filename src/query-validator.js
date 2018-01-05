@@ -102,6 +102,7 @@ function validateContactCategory(productType) {
 function validateWarrantyClaimPost(params) {
 	// check for missing data
 	if (!checkMissingKeys([
+			'submissionTimestamp',
 			'userFirstName',
 			'userLastName',
 			'userAddress',

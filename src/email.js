@@ -26,6 +26,7 @@ function sendWarrantyClaimEmail(data) {
 	const message = `<html><body><div style="font-size: ${regularFontSize}px;"><p>Warranty claim received from Escalade Customer Service website:</p>
 	<hr>
 	<p><b>Claim ID: ${data.requestId}</b></p>
+	<p>Submitted at ${data.submissionTimestamp}</p>
 	<hr>
 	<h2 style="font-size: ${headerFontSize}px;">User</h2>
 	<ul>

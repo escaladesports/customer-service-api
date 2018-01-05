@@ -1,6 +1,7 @@
 'use strict';
 
 const serviceApi = require('./src/customer-service-api.js');
+const timestamp = require('./src/timestamp.js');
 
 function sendJsonResponse(data, callback) {
   const body = JSON.stringify(data);
@@ -16,6 +17,9 @@ function sendJsonResponse(data, callback) {
 }
 
 function sendJsonError(err, callback) {
+  console.error('Error:');
+  console.dir(err);
+  
   let msg = 'There was a problem with your request. Please try again later';
 
   if (err.code === 'malformed') {
@@ -43,6 +47,7 @@ function postWarrantyClaim(event, context, callback) {
   const body = JSON.parse(event.body);
 
   const params = {
+    submissionTimestamp: timestamp.createCurrentTimestamp(),
     userFirstName: body['name-first'],
     userLastName: body['name-last'],
     userAddress: body['address'],
