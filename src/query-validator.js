@@ -128,6 +128,7 @@ function validateWarrantyClaimPost(params) {
 			'fileModelNumber',
 			'filesProblem'
 		], params)) {
+		console.error('warranty validation error: missing keys');
 		return false;
 	}
 	// field length validation
@@ -146,31 +147,36 @@ function validateWarrantyClaimPost(params) {
 		(params.productProblem && !validateTextLength(params.productProblem, 50000)) ||
 		!validateTextLength(params.fileReceipt[0], 1000) || !validateTextLength(params.fileModelNumber[0], 1000)
 	) {
-		console.log('invalid field length');
+		console.log('warranty validation error: invalid field length');
 		return false;
 	}
 	for (let file of params.filesProblem) {
 		if (!validateTextLength(file, 1000)) {
-			console.log('invalid field length');
+			console.log('warranty validation error: invalid problem-photos file field length');
 			return false;
 		}
 	}
 	// email validation
 	if (!validateEmail(params.userEmail, params.userEmailConfirm)) {
+		console.error('warranty validation error: invalid email')
 		return false;
 	}
 	// file field validation
 	if (!validateFileField(params.fileReceipt, 1, 1)) {
+		console.error('warranty validation error: invalid receipt file field');
 		return false;
 	}
 	if (!validateFileField(params.fileModelNumber, 1, 1)) {
+		console.error('warranty validation error: invalid model number file field');
 		return false;
 	}
 	if (!validateFileField(params.filesProblem, 1, 5)) {
+		console.error('warranty validation error: invalid problem-photos file field');
 		return false;
 	}
 	// product type validation
 	if (!validateWarrantyCategory(params.productType)) {
+		console.error('warranty validation error: invalid product category');
 		return false;
 	}
 	return true;
@@ -183,9 +189,9 @@ function validateContactPost(params) {
 		'userEmail',
 		'userEmailConfirm',
 		'contactSubject',
-		'contactMessage',
-		'productType'
+		'contactMessage'
 	], params)) {
+		console.error('contact validation error: missing keys');
 		return false;
 	}
 	// field length validation
@@ -194,18 +200,17 @@ function validateContactPost(params) {
 		!validateTextLength(params.userEmailConfirm, 255) || !validateTextLength(params.contactSubject, 255) ||
 		!validateTextLength(params.contactMessage, 50000) || !validateTextLength(params.productType, 255)
 	) {
-		return false;
-	}
-	// zip validation
-	if (!validateZip(params.userZip)) {
+		console.error('contact validation error: invalid field length');
 		return false;
 	}
 	// email validation
 	if (!validateEmail(params.userEmail, params.userEmailConfirm)) {
+		console.error('contact validation error: invalid email')
 		return false;
 	}
 	// product type/category validation
 	if (!validateContactCategory(params.productType)) {
+		console.error('contact validation error: invalid product category')
 		return false;
 	}
 	return true;
