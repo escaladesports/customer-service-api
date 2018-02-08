@@ -19,7 +19,8 @@
     "dev": "NODE_ENV=dev serverless offline start",
     "deploy": "serverless deploy --stage dev",
     "deploy-prod": "serverless deploy --stage production",
-    "encrypt": "envdotjs --encrypt",
+	 "encrypt": "envdotjs --encrypt",
+	 "logs": "serverless logs --function postContact --stage envdotjs",
     "unencrypt": "envdotjs --unencrypt"
   }
 }
