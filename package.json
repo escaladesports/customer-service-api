@@ -2,6 +2,7 @@
   "version": "0.1.0",
   "devDependencies": {
     "esca-scripts": "^0.12.1",
+    "serverless": "^1.26.0",
     "serverless-offline": "^3.16.0"
   },
   "dependencies": {
