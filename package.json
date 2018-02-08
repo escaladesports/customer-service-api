@@ -1,5 +1,5 @@
 {
-  "version": "0.1.0",
+  "version": "0.2.0",
   "devDependencies": {
     "esca-scripts": "^0.12.1",
     "serverless": "^1.26.0",
@@ -19,8 +19,8 @@
     "dev": "NODE_ENV=dev serverless offline start",
     "deploy": "serverless deploy --stage dev",
     "deploy-prod": "serverless deploy --stage production",
-	 "encrypt": "envdotjs --encrypt",
-	 "logs": "serverless logs --function postContact --stage envdotjs",
+    "encrypt": "envdotjs --encrypt",
+    "logs": "serverless logs --function postContact --stage envdotjs",
     "unencrypt": "envdotjs --unencrypt"
   }
 }
