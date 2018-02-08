@@ -1,5 +1,7 @@
 'use strict';
 
+require('envdotjs').load()
+
 const serviceApi = require('./src/customer-service-api.js');
 const timestamp = require('./src/timestamp.js');
 
@@ -19,7 +21,7 @@ function sendJsonResponse(data, callback) {
 function sendJsonError(err, callback) {
   console.error('Error:');
   console.dir(err);
-  
+
   let msg = 'There was a problem with your request. Please try again later';
 
   if (err.code === 'malformed') {
@@ -81,7 +83,7 @@ function postWarrantyClaim(event, context, callback) {
     return sendJsonResponse(responseData, callback);
   }).catch(err => {
     return sendJsonError(err, callback);
-  }); 
+  });
 }
 
 function postContact(event, context, callback) {

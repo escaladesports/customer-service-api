@@ -1,7 +1,6 @@
 service: customer-service-api # NOTE: update this with your service name
 
 custom:
-  secrets: ${file(env.yml):prod}
   defaultStage: dev
   defaultProfile: default
 
@@ -13,9 +12,6 @@ provider:
   environment:
     STAGE: ${self:provider.stage}
     PROFILE: ${self:custom.defaultProfile}
-    SPARKPOST_API_KEY: "${self:custom.secrets.SPARKPOST_API_KEY}"
-    GOOGLE_SHEETS_API_KEY: "${self:custom.secrets.GOOGLE_SHEETS_API_KEY}"
-    GOOGLE_SHEETS_CLIENT_EMAIL: "${self:custom.secrets.GOOGLE_SHEETS_CLIENT_EMAIL}"
 
 plugins:
   - serverless-offline

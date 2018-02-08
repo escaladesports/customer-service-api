@@ -1,8 +1,12 @@
 {
+  "version": "0.1.0",
   "devDependencies": {
+    "esca-scripts": "^0.12.1",
+    "serverless": "^1.26.0",
     "serverless-offline": "^3.16.0"
   },
   "dependencies": {
+    "envdotjs": "^1.1.4",
     "googleapis": "^22.2.0",
     "is-email": "^1.0.0",
     "is-valid-zip": "^0.0.3",
@@ -11,8 +15,12 @@
     "sparkpost": "^2.1.2"
   },
   "scripts": {
+    "build": "serverless package",
     "dev": "NODE_ENV=dev serverless offline start",
     "deploy": "serverless deploy --stage dev",
-    "deploy-prod": "serverless deploy --stage production"
+    "deploy-prod": "serverless deploy --stage production",
+	 "encrypt": "envdotjs --encrypt",
+	 "logs": "serverless logs --function postContact --stage envdotjs",
+    "unencrypt": "envdotjs --unencrypt"
   }
 }
