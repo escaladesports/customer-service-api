@@ -20,7 +20,7 @@
     "deploy": "serverless deploy --stage dev",
     "deploy-prod": "serverless deploy --stage production",
     "encrypt": "envdotjs --encrypt",
-    "logs": "serverless logs --function postContact --stage envdotjs",
+    "logs": "serverless logs --function postContact --stage production",
     "unencrypt": "envdotjs --unencrypt"
   }
 }
