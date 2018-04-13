@@ -22,7 +22,7 @@ function sendWarrantyClaimEmail(data) {
 
 	const filesProblemItems = Array.isArray(data.filesProblem) ? data.filesProblem.map(path => `<li>${path}</li>`).join('') : `<li>${data.filesProblem}</li>`;
 
-	const subject = `New warranty claim submission [${data.requestId}] from Escalade Customer Service website`;
+	const subject = `New warranty claim submission: ${data.userFirstName} ${data.userLastName} [${data.requestId}]`;
 	const message = `<html><body><div style="font-size: ${regularFontSize}px;"><p>Warranty claim received from Escalade Customer Service website:</p>
 	<hr>
 	<p><b>Claim ID: ${data.requestId}</b></p>

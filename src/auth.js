@@ -1,7 +1,7 @@
 const google = require('googleapis');
 
-const googleSheetsClientEmail = process.env.GOOGLE_SHEETS_CLIENT_EMAIL;
-const googleSheetsKey = process.env.GOOGLE_SHEETS_API_KEY;
+const googleSheetsClientEmail = process.env.GOOGLE_SHEETS_CLIENT_EMAIL
+const googleSheetsKey = process.env.GOOGLE_SHEETS_API_KEY
 
 /**
 	Creates a JWT client with the given credentials
@@ -17,7 +17,7 @@ function authorizeGoogleJWT(clientEmail, privateKey, scopes) {
 		privateKey,
 		scopes,
 		null
-	);
+	)
 }
 
 /**
@@ -27,7 +27,7 @@ function authorizeGoogleJWT(clientEmail, privateKey, scopes) {
 */
 function authenticateGoogleSheets(readonly) {
 	const scopes = [(readonly ? 'https://www.googleapis.com/auth/spreadsheets.readonly' : 'https://www.googleapis.com/auth/spreadsheets')];
-	return Promise.resolve(authorizeGoogleJWT(googleSheetsClientEmail, googleSheetsKey, scopes));
+	return Promise.resolve(authorizeGoogleJWT(googleSheetsClientEmail, googleSheetsKey, scopes))
 }
 
 module.exports = {
